@@ -85,8 +85,11 @@ main() {
     prepare_tarball node_exporter
     prepare_tarball pid-watchdog
 
-    prepare_tarball percona-toolkit
-    repack_toolkit
+    PMM_VER=$(echo $pmm_version | awk -F'.' '{print $1}')
+    if [ "x$PMM_VER" = 'x1' ]; then
+        prepare_tarball percona-toolkit
+        repack_toolkit
+    fi
 
     tar -C $(dirname ${source_dir}) -zcpf ${source_tarball} $(basename ${source_dir})
 }
