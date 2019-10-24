@@ -1,5 +1,6 @@
 %define debug_package %{nil}
 
+
 %{!?with_systemd:%global systemd 0}
 %{?el7:          %global systemd 1}
 %{?el8:          %global systemd 1}
